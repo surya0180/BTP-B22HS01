@@ -8,12 +8,16 @@ public class QuizManager : MonoBehaviour
 {
     public List<QuestionsAndAnswers> QnA;
     public GameObject[] options;
-    public int currentQuestion;
+    public int currentQuestion = 0;
 
     public Text QuestionTxt;
     public Text scoreTxt;
     public GameObject Quizpanel;
     public GameObject Gopanel;
+
+    public GameObject cube;
+    public GameObject cuboid;
+    public GameObject sphere;
     int totalQuestions = 0;
     public int score = 0;
 
@@ -21,11 +25,19 @@ public class QuizManager : MonoBehaviour
     {
         totalQuestions = QnA.Count;
         Gopanel.SetActive(false);
+        cube.SetActive(false);
+        cuboid.SetActive(false);
+        sphere.SetActive(false);
         generateQuestion();
     }
 
     public void retry(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        currentQuestion = 0;
+        score = 0;
+        Quizpanel.SetActive(true);
+        Gopanel.SetActive(false);
+        generateQuestion();
     }
     public void gameOver()
     {
@@ -36,12 +48,12 @@ public class QuizManager : MonoBehaviour
     public void correct()
     {
         score++;
-        QnA.RemoveAt(currentQuestion);
+        currentQuestion++;
         generateQuestion();
     }
 
     public void wrong(){
-        QnA.RemoveAt(currentQuestion);
+        currentQuestion++;
         generateQuestion();
     }
     void SetAnswers()
@@ -60,14 +72,25 @@ public class QuizManager : MonoBehaviour
 
     void generateQuestion()
     {
-        if (QnA.Count > 0)
+
+        if (currentQuestion < QnA.Count)
         {
-            currentQuestion = Random.Range(0, QnA.Count);
             QuestionTxt.text = QnA[currentQuestion].Question;
             SetAnswers();
+            if (currentQuestion == 0)
+            {
+                cube.SetActive(true);
+            }else if(currentQuestion == 1){
+                cube.SetActive(false);
+                cuboid.SetActive(true);
+            }else{
+                cuboid.SetActive(false);
+                sphere.SetActive(true);
+            }
         }
         else
         {
+            sphere.SetActive(false);
             gameOver();
         }
 
