@@ -31,7 +31,8 @@ public class QuizManager : MonoBehaviour
         generateQuestion();
     }
 
-    public void retry(){
+    public void retry()
+    {
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         currentQuestion = 0;
         score = 0;
@@ -49,11 +50,17 @@ public class QuizManager : MonoBehaviour
     {
         score++;
         currentQuestion++;
-        generateQuestion();
+        StartCoroutine(WaitForNext());
     }
 
-    public void wrong(){
+    public void wrong()
+    {
         currentQuestion++;
+        StartCoroutine(WaitForNext());
+    }
+    IEnumerator WaitForNext()
+    {
+        yield return new WaitForSeconds(1);
         generateQuestion();
     }
     void SetAnswers()
@@ -62,10 +69,13 @@ public class QuizManager : MonoBehaviour
         {
             options[i].GetComponent<AnswerScript>().isCorrect = false;
             options[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = QnA[currentQuestion].Answers[i];
-
+            // options[i].GetComponent<Image>().color = options[i].GetComponent<AnswerScript>().startColor;
+            options[i].GetComponent<Image>().color = Color.white;
             if (QnA[currentQuestion].CorrectAnswer == i + 1)
             {
+                Debug.Log("Changed color");
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
+                
             }
         }
     }
@@ -80,10 +90,14 @@ public class QuizManager : MonoBehaviour
             if (currentQuestion == 0)
             {
                 cube.SetActive(true);
-            }else if(currentQuestion == 1){
+            }
+            else if (currentQuestion == 1)
+            {
                 cube.SetActive(false);
                 cuboid.SetActive(true);
-            }else{
+            }
+            else
+            {
                 cuboid.SetActive(false);
                 sphere.SetActive(true);
             }
