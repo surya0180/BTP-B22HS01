@@ -23,6 +23,7 @@ public class QuizManager : MonoBehaviour
     public GameObject Quizpanel;
     public GameObject Gopanel;
 
+    public GameObject homePanel;
     public GameObject InfoPanel;
 
     public GameObject cube;
@@ -38,23 +39,37 @@ public class QuizManager : MonoBehaviour
         };
     private void Start()
     {
+        homePanel.SetActive(true);
         totalQuestions = QnA.Count;
         InfoPanel.SetActive(false);
         Gopanel.SetActive(false);
         cube.SetActive(false);
         cuboid.SetActive(false);
         sphere.SetActive(false);
-        generateQuestion();
+        Quizpanel.SetActive(false);
+
     }
 
+    public void startGame()
+    {
+        homePanel.SetActive(false);
+        Quizpanel.SetActive(true);
+        title.text = ObjectItems[currentQuestion].name;
+        line1.text = ObjectItems[currentQuestion].line1;
+        line2.text = ObjectItems[currentQuestion].line2;
+        line3.text = ObjectItems[currentQuestion].line3;
+        line4.text = ObjectItems[currentQuestion].line4;
+        line5.text = ObjectItems[currentQuestion].line5;
+        generateQuestion();
+    }
     public void retry()
     {
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         currentQuestion = 0;
         score = 0;
-        Quizpanel.SetActive(true);
+        // Quizpanel.SetActive(true);
         Gopanel.SetActive(false);
-        generateQuestion();
+        startGame();
     }
     public void gameOver()
     {
