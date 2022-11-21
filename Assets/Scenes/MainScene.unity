@@ -7452,21 +7452,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QnA:
-  - Question: How many number of sides to a cube ?
+  - Question: Pick the cube on the table and count the number of sides on it, and
+      pick the right value
     Answers:
     - 8
     - 6
     - 5
     - 4
     CorrectAnswer: 2
-  - Question: How many number of sides to Cubiod ?
+  - Question: Pick the cuboid on the table and count the number of sides on it, and
+      pick the right value.
     Answers:
     - 8
     - 5
     - 6
     - 4
     CorrectAnswer: 3
-  - Question: How many sides to a Sphere
+  - Question: Pick the sphere on the table and count the number of sides on it, and
+      pick the right value
     Answers:
     - 0
     - 1
@@ -7977,7 +7980,7 @@ Transform:
   m_GameObject: {fileID: 797052510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.817, y: 0.353, z: 1.22}
-  m_LocalScale: {x: 0.05, y: 0.4, z: 0.05}
+  m_LocalScale: {x: 0.05, y: 0.42027998, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2008754795}
@@ -9904,7 +9907,7 @@ Transform:
   m_GameObject: {fileID: 1128158254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.07, y: 0.353, z: 1.22}
-  m_LocalScale: {x: 0.05, y: 0.4, z: 0.05}
+  m_LocalScale: {x: 0.05, y: 0.42027998, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2008754795}
@@ -10483,8 +10486,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179219597}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.446, y: 0.99, z: 0.94}
-  m_LocalScale: {x: 0.5892575, y: 0.2975057, z: 0.2003265}
+  m_LocalPosition: {x: -12.446, y: 0.993, z: 0.94}
+  m_LocalScale: {x: 0.4, y: 0.3, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 530548407}
@@ -10523,7 +10526,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e7f5cbf3de322304f998db03ebc11bb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10722,7 +10725,7 @@ Transform:
   m_GameObject: {fileID: 1192130548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.893, y: 0.353, z: 0.552}
-  m_LocalScale: {x: 0.05, y: 0.4, z: 0.05}
+  m_LocalScale: {x: 0.05, y: 0.42027998, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2008754795}
@@ -47658,7 +47661,7 @@ Transform:
   m_GameObject: {fileID: 1884230188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.07, y: 0.353, z: 0.555}
-  m_LocalScale: {x: 0.05, y: 0.4, z: 0.05}
+  m_LocalScale: {x: 0.05, y: 0.42027998, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2008754795}
@@ -48245,8 +48248,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989268616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.319, y: 1.046, z: 0.963}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalPosition: {x: -12.319, y: 1.009, z: 0.963}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 530548407}
@@ -48426,7 +48429,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e7f5cbf3de322304f998db03ebc11bb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -48734,8 +48737,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068514931}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.437, y: 1.01, z: 1.06}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalPosition: {x: -12.437, y: 1.002, z: 1.06}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 530548407}
@@ -48774,7 +48777,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e7f5cbf3de322304f998db03ebc11bb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -48982,7 +48985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.1201, y: 2.4439}
+  m_AnchoredPosition: {x: -13.14, y: 2.4439}
   m_SizeDelta: {x: 114.0327, y: 70.7627}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2072984299
