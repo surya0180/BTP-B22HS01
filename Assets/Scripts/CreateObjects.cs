@@ -6,23 +6,25 @@ using UnityEngine;
 public class CreateObjects : MonoBehaviour
 {
     public GameObject CubePrefab;
+    public List<GameObject> ObjectShapes;
     public GameObject objects;
     IEnumerator WaitForNext(int i)
     {
-        yield return new WaitForSeconds(1);
-        GameObject clone = Instantiate(CubePrefab , transform.position, Quaternion.identity);
-        clone.transform.parent = objects.transform;
-        clone.name = "Cube"+i;
+        if (i < ObjectShapes.Count)
+        {
+            yield return new WaitForSeconds(0.3f);
+            GameObject clone = Instantiate(ObjectShapes[i] , transform.position, Quaternion.identity);
+            clone.transform.parent = objects.transform;
+            clone.name = "Cube"+i;
+            StartCoroutine(WaitForNext(i+1));
+        }
+        
     }
     public void startGame()
     {
         Debug.Log("Game Started");
-        int i = 0;
-        while (i < 5)
-        {
-            StartCoroutine(WaitForNext(i));
-            i++;
-        }
+        StartCoroutine(WaitForNext(0));
+           
     }
 
 }
