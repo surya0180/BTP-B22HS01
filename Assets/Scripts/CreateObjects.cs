@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CreateObjects : MonoBehaviour
 {
-    public GameObject CubePrefab;
+    // public GameObject CubePrefab;
     public List<GameObject> ObjectShapes;
     public GameObject objects;
     IEnumerator WaitForNext(int i)
@@ -15,7 +15,7 @@ public class CreateObjects : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
             GameObject clone = Instantiate(ObjectShapes[i], transform.position, Quaternion.identity);
             clone.transform.parent = objects.transform;
-            clone.name = "Cube" + i;
+            clone.name = ObjectShapes[i].name + "_" + i;
             StartCoroutine(WaitForNext(i + 1));
         }
     }
