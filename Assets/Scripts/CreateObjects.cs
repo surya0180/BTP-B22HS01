@@ -13,18 +13,15 @@ public class CreateObjects : MonoBehaviour
         if (i < ObjectShapes.Count)
         {
             yield return new WaitForSeconds(0.3f);
-            GameObject clone = Instantiate(ObjectShapes[i] , transform.position, Quaternion.identity);
+            GameObject clone = Instantiate(ObjectShapes[i], transform.position, Quaternion.identity);
             clone.transform.parent = objects.transform;
-            clone.name = "Cube"+i;
-            StartCoroutine(WaitForNext(i+1));
+            clone.name = "Cube" + i;
+            StartCoroutine(WaitForNext(i + 1));
         }
-        
     }
     public void startGame()
     {
         Debug.Log("Game Started");
         StartCoroutine(WaitForNext(0));
-           
     }
-
 }
