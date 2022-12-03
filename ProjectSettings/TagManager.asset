@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Cube
+  - Cuboid
+  - Sphere
+  - Cone
+  - Cylinder
+  - Pyramid
   layers:
   - Default
   - TransparentFX

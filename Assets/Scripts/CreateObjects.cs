@@ -73,6 +73,29 @@ public class CreateObjects : MonoBehaviour
 
     public void RetryGame()
     {
+        GameObject mainBucket = GameObject.Find("MainBucket");
+        GameObject cubeBucket = GameObject.Find("CubeBucket");
+        GameObject cuboidBucket = GameObject.Find("CuboidBucket");
+        GameObject coneBucket = GameObject.Find("ConeBucket");
+        GameObject cylinderBucket = GameObject.Find("CylinderBucket");
+        GameObject sphereBucket = GameObject.Find("SphereBucket");
+        GameObject pyramidBucket = GameObject.Find("PyramidBucket");
 
+        Destroy(mainBucket, 2.0f);
+        Destroy(cubeBucket, 2.0f);
+        Destroy(cuboidBucket, 2.0f);
+        Destroy(coneBucket, 2.0f);
+        Destroy(cylinderBucket, 2.0f);
+        Destroy(sphereBucket, 2.0f);
+        Destroy(pyramidBucket, 2.0f);
+
+        GameObject gameArea = GameObject.Find("GameArea");
+        GameObject gameObject = new GameObject("MainBucket");
+
+        gameObject.transform.parent = gameArea.transform;
+
+        WelcomePanel.SetActive(true);
+        InGamePanel.SetActive(false);
+        GameOverPanel.SetActive(false);
     }
 }
