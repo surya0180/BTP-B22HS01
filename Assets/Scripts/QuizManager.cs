@@ -14,11 +14,7 @@ public class QuizManager : MonoBehaviour
     public Text scoreTxt;
 
     public TMP_Text title;
-    public TMP_Text line1;
-    public TMP_Text line2;
-    public TMP_Text line3;
-    public TMP_Text line4;
-    public TMP_Text line5;
+    public TMP_Text[] lines;
 
     public GameObject Quizpanel;
     public GameObject Gopanel;
@@ -26,26 +22,17 @@ public class QuizManager : MonoBehaviour
     public GameObject homePanel;
     public GameObject InfoPanel;
 
-    public GameObject cube;
-    public GameObject cuboid;
-    public GameObject sphere;
+    public GameObject AllPrefabs;
+
+    GameObject shape1;
     int totalQuestions = 0;
     public int score = 0;
-
-    public List<ObjectItem> ObjectItems = new List<ObjectItem>() {
-                new ObjectItem(){  name="Cube" ,line1="Number of sides = 6", line2 = "Area of each side of the cube = a x a", line3 = "Total area of the Cube = 6 x a x a", line4 = "volume of the cube = a x a x a", line5 ="a : lenth of the side of a cube"},
-                new ObjectItem(){  name="Cuboid" ,line1="Number of sides = 6", line2 = "Area of each side of the cuboid = l x b / l x h / h x b ", line3 = "Total area of the Cuboid = 2(l x b + l x h + h x b)", line4 = "volume of the cuboid = l x b x h", line5 ="l : length, b : bredth, h : height"},
-                new ObjectItem(){  name="Sphere" ,line1="Number of sides = 0", line2 = "Area of sphere in 2D plane = Π x r x r", line3 = "Area of sphere in 3D plane = 4 x Π x r x r", line4 = "volume of the cube = 4/3 x Π x r x r x r", line5 ="r : Radius of the sphere"},
-        };
     private void Start()
     {
         homePanel.SetActive(true);
         totalQuestions = QnA.Count;
         InfoPanel.SetActive(false);
         Gopanel.SetActive(false);
-        cube.SetActive(false);
-        cuboid.SetActive(false);
-        sphere.SetActive(false);
         Quizpanel.SetActive(false);
 
     }
@@ -54,12 +41,6 @@ public class QuizManager : MonoBehaviour
     {
         homePanel.SetActive(false);
         Quizpanel.SetActive(true);
-        title.text = ObjectItems[currentQuestion].name;
-        line1.text = ObjectItems[currentQuestion].line1;
-        line2.text = ObjectItems[currentQuestion].line2;
-        line3.text = ObjectItems[currentQuestion].line3;
-        line4.text = ObjectItems[currentQuestion].line4;
-        line5.text = ObjectItems[currentQuestion].line5;
         generateQuestion();
     }
     public void retry()
@@ -67,7 +48,6 @@ public class QuizManager : MonoBehaviour
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         currentQuestion = 0;
         score = 0;
-        // Quizpanel.SetActive(true);
         Gopanel.SetActive(false);
         startGame();
     }
@@ -89,28 +69,27 @@ public class QuizManager : MonoBehaviour
     }
     IEnumerator WaitForNext()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.2f);
+        title.text = QnA[currentQuestion].title;
+        for (int i = 0; i < QnA[currentQuestion].lines.Length; i++)
+        {
+            lines[i].text = QnA[currentQuestion].lines[i];
+        }
         InfoPanel.SetActive(true);
     }
     public void next()
     {
+        QnA[currentQuestion].firstPrefab.SetActive(false);
         currentQuestion++;
         if (currentQuestion < QnA.Count)
         {
             Debug.Log(currentQuestion);
-            title.text = ObjectItems[currentQuestion].name;
-            line1.text = ObjectItems[currentQuestion].line1;
-            line2.text = ObjectItems[currentQuestion].line2;
-            line3.text = ObjectItems[currentQuestion].line3;
-            line4.text = ObjectItems[currentQuestion].line4;
-            line5.text = ObjectItems[currentQuestion].line5;
             InfoPanel.SetActive(false);
             generateQuestion();
         }
         else
         {
             InfoPanel.SetActive(false);
-            sphere.SetActive(false);
             gameOver();
         }
 
@@ -134,21 +113,8 @@ public class QuizManager : MonoBehaviour
     void generateQuestion()
     {
         QuestionTxt.text = QnA[currentQuestion].Question;
+        QnA[currentQuestion].firstPrefab.transform.position =  AllPrefabs.transform.position;
+        QnA[currentQuestion].firstPrefab.SetActive(true);
         SetAnswers();
-        if (currentQuestion == 0)
-        {
-            cube.SetActive(true);
-        }
-        else if (currentQuestion == 1)
-        {
-            cube.SetActive(false);
-            cuboid.SetActive(true);
-        }
-        else
-        {
-            cuboid.SetActive(false);
-            sphere.SetActive(true);
-        }
-
     }
 }
