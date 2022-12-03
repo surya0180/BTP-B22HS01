@@ -5,12 +5,21 @@ using UnityEngine;
 
 public class CreateObjects : MonoBehaviour
 {
-    // public GameObject CubePrefab;
     public List<GameObject> ObjectShapes;
     public GameObject objects;
     private GameObject WelcomePanel;
     private GameObject InGamePanel;
     private GameObject GameOverPanel;
+
+    public Material WhiteMaterial;
+
+    public ObjectDetector CubeBucket;
+    public ObjectDetector CuboidBucket;
+    public ObjectDetector ConeBucket;
+    public ObjectDetector CylinderBucket;
+    public ObjectDetector SphereBucket;
+    public ObjectDetector PyramidBucket;
+
 
     private void Start()
     {
@@ -23,23 +32,6 @@ public class CreateObjects : MonoBehaviour
         GameOverPanel.SetActive(false);
     }
 
-    private bool isColorGreen(string objName)
-    {
-        Material status = GameObject.Find(objName).transform.Find("left").GetComponent<Renderer>().material;
-        return status.name.Split(" ")[0] == "Green";
-    }
-
-    private bool IsGameOver()
-    {
-
-        return isColorGreen("CubeBin") &&
-               isColorGreen("CuboidBin") &&
-               isColorGreen("ConeBin") &&
-               isColorGreen("CylinderBin") &&
-               isColorGreen("PyramidBin") &&
-               isColorGreen("SphereBin");
-    }
-
     private void Update()
     {
         if (IsGameOver())
@@ -50,7 +42,17 @@ public class CreateObjects : MonoBehaviour
         }
     }
 
-    IEnumerator WaitForNext(int i)
+    private bool IsGameOver()
+    {
+        return isColorGreen("CubeBin") &&
+               isColorGreen("CuboidBin") &&
+               isColorGreen("ConeBin") &&
+               isColorGreen("CylinderBin") &&
+               isColorGreen("PyramidBin") &&
+               isColorGreen("SphereBin");
+    }
+
+    private IEnumerator WaitForNext(int i)
     {
         if (i < ObjectShapes.Count)
         {
@@ -71,23 +73,20 @@ public class CreateObjects : MonoBehaviour
         GameOverPanel.SetActive(false);
     }
 
+    private bool isColorGreen(string objName)
+    {
+        Material status = GameObject.Find(objName).transform.Find("left").GetComponent<Renderer>().material;
+        return status.name.Split(" ")[0] == "Green";
+    }
+
     public void RetryGame()
     {
-        GameObject mainBucket = GameObject.Find("MainBucket");
-        GameObject cubeBucket = GameObject.Find("CubeBucket");
-        GameObject cuboidBucket = GameObject.Find("CuboidBucket");
-        GameObject coneBucket = GameObject.Find("ConeBucket");
-        GameObject cylinderBucket = GameObject.Find("CylinderBucket");
-        GameObject sphereBucket = GameObject.Find("SphereBucket");
-        GameObject pyramidBucket = GameObject.Find("PyramidBucket");
-
-        Destroy(mainBucket, 2.0f);
-        Destroy(cubeBucket, 2.0f);
-        Destroy(cuboidBucket, 2.0f);
-        Destroy(coneBucket, 2.0f);
-        Destroy(cylinderBucket, 2.0f);
-        Destroy(sphereBucket, 2.0f);
-        Destroy(pyramidBucket, 2.0f);
+        CubeBucket.deleteBucket();
+        CuboidBucket.deleteBucket();
+        ConeBucket.deleteBucket();
+        CylinderBucket.deleteBucket();
+        SphereBucket.deleteBucket();
+        PyramidBucket.deleteBucket();
 
         GameObject gameArea = GameObject.Find("GameArea");
         GameObject gameObject = new GameObject("MainBucket");

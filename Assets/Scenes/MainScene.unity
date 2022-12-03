@@ -687,7 +687,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1542042095}
         m_TargetAssemblyTypeName: CreateObjects, Assembly-CSharp
-        m_MethodName: startGame
+        m_MethodName: RetryGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15525,6 +15525,13 @@ MonoBehaviour:
   - {fileID: 6087500921798918429, guid: e201e0ee6340ed8439f655f65df8db24, type: 3}
   - {fileID: 7148642428220201308, guid: 480176bad88ab764f98e51eeefabf06b, type: 3}
   objects: {fileID: 1328315109}
+  WhiteMaterial: {fileID: 2100000, guid: 1154d8dbf87223142a7b3d6408e2be33, type: 2}
+  CubeBucket: {fileID: 484651320}
+  CuboidBucket: {fileID: 1250250779}
+  ConeBucket: {fileID: 1741092784}
+  CylinderBucket: {fileID: 1631151462}
+  SphereBucket: {fileID: 371073046}
+  PyramidBucket: {fileID: 969053580}
 --- !u!1 &1560651820
 GameObject:
   m_ObjectHideFlags: 0

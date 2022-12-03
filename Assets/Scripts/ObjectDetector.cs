@@ -22,8 +22,29 @@ public class ObjectDetector : MonoBehaviour
         switch (this.tag)
         {
             case "Cube":
-                map["Dice"] = true;
-                map["RubiksCube"] = true;
+                map["Dice"] = false;
+                map["RubiksCube"] = false;
+                return map;
+            case "Cuboid":
+                map["Matchbox"] = false;
+                map["Notebook"] = false;
+                return map;
+            case "Sphere":
+                map["BasketBall"] = false;
+                map["Football"] = false;
+                map["TennisBall"] = false;
+                return map;
+            case "Cone":
+                map["PartyHat"] = false;
+                map["TrafficCone"] = false;
+                return map;
+            case "Cylinder":
+                map["DrinkCan"] = false;
+                map["GasCylinder"] = false;
+                return map;
+            case "Pyramid":
+                map["ClassicPyramid"] = false;
+                map["TopPyramid"] = false;
                 return map;
             default:
                 return map;
@@ -35,7 +56,7 @@ public class ObjectDetector : MonoBehaviour
         currentObjects = getMappingFromTag();
         otherObjects = new Dictionary<string, bool>();
 
-        currentBucket = new GameObject($"{this.tag}Objects");
+        currentBucket = new GameObject($"{this.tag}Bucket");
         mainBucket = GameObject.Find("MainBucket");
 
         currentBin = GameObject.Find($"{this.tag}Bin");
@@ -48,6 +69,11 @@ public class ObjectDetector : MonoBehaviour
     void Update()
     {
         Renderer currentRenderer = currentBin.transform.Find("left").GetComponent<Renderer>();
+        if (currentObjects.Count == 0)
+        {
+            currentRenderer.material = WhiteMaterial;
+            return;
+        }
         if (otherObjects.Count != 0)
         {
             currentRenderer.material = RedMaterial;
@@ -92,5 +118,15 @@ public class ObjectDetector : MonoBehaviour
             otherObjects.Remove(name);
         }
         other.gameObject.transform.parent = mainBucket.transform;
+    }
+
+    public void deleteBucket()
+    {
+        foreach (Transform child in currentBucket.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        currentObjects = getMappingFromTag();
+        otherObjects.Clear();
     }
 }
