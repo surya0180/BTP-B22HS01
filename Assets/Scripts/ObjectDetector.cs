@@ -9,6 +9,7 @@ public class ObjectDetector : MonoBehaviour
     public Material GreenMaterial;
     public Material RedMaterial;
     public Material WhiteMaterial;
+
     Dictionary<string, bool> currentObjects;
     Dictionary<string, bool> otherObjects;
 
@@ -16,45 +17,12 @@ public class ObjectDetector : MonoBehaviour
     GameObject mainBucket;
     GameObject currentBin;
 
-    Dictionary<string, bool> getMappingFromTag()
-    {
-        Dictionary<string, bool> map = new Dictionary<string, bool>();
-        switch (this.tag)
-        {
-            case "Cube":
-                map["Dice"] = false;
-                map["RubiksCube"] = false;
-                return map;
-            case "Cuboid":
-                map["Matchbox"] = false;
-                map["Notebook"] = false;
-                return map;
-            case "Sphere":
-                map["BasketBall"] = false;
-                map["Football"] = false;
-                map["TennisBall"] = false;
-                return map;
-            case "Cone":
-                map["PartyHat"] = false;
-                map["TrafficCone"] = false;
-                return map;
-            case "Cylinder":
-                map["DrinkCan"] = false;
-                map["GasCylinder"] = false;
-                return map;
-            case "Pyramid":
-                map["ClassicPyramid"] = false;
-                map["TopPyramid"] = false;
-                return map;
-            default:
-                return map;
-        }
-    }
+    public CreateObjects Shapes;
 
     void Start()
     {
-        currentObjects = getMappingFromTag();
         otherObjects = new Dictionary<string, bool>();
+        currentObjects = new Dictionary<string, bool>();
 
         currentBucket = new GameObject($"{this.tag}Bucket");
         mainBucket = GameObject.Find("MainBucket");
@@ -120,13 +88,18 @@ public class ObjectDetector : MonoBehaviour
         other.gameObject.transform.parent = mainBucket.transform;
     }
 
+    public void setCurrentObjects()
+    {
+        currentObjects = this.Shapes.GeometryShapes[this.tag];
+    }
+
     public void deleteBucket()
     {
         foreach (Transform child in currentBucket.transform)
         {
             Destroy(child.gameObject);
         }
-        currentObjects = getMappingFromTag();
+        currentObjects.Clear();
         otherObjects.Clear();
     }
 }
