@@ -76,10 +76,13 @@ public class QuizManager : MonoBehaviour
             lines[i].text = QnA[currentQuestion].lines[i];
         }
         InfoPanel.SetActive(true);
+        QnA[currentQuestion].infoObject.transform.Rotate(90.0f, 0.0f, 0.0f, Space.Self);
+        QnA[currentQuestion].infoObject.SetActive(true);
     }
     public void next()
     {
         QnA[currentQuestion].firstPrefab.SetActive(false);
+        QnA[currentQuestion].infoObject.SetActive(false);
         currentQuestion++;
         if (currentQuestion < QnA.Count)
         {

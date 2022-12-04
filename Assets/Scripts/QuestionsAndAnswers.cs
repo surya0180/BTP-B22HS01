@@ -11,6 +11,7 @@ public class QuestionsAndAnswers
 
     public string title;
     public GameObject firstPrefab;
+    public GameObject infoObject;
 
     public string[] lines;
 }
