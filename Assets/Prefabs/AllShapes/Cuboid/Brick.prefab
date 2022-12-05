@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6514227302334231657}
   m_Layer: 0
   m_Name: Brick
-  m_TagString: Untagged
+  m_TagString: Cuboid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

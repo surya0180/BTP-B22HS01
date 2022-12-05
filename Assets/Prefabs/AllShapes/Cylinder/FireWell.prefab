@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5374292518491137672}
   m_Layer: 0
   m_Name: FireWell
-  m_TagString: Untagged
+  m_TagString: Cylinder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
